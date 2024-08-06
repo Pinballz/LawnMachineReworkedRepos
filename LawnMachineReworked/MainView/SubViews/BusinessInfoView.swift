@@ -22,7 +22,7 @@ struct BusinessInfoView: View {
         NavigationStack {
             VStack {
                 Form {
-                    BisInfoTextView(businessInfo: $businessInfo, customers: CustomerViewModel())
+                    BisInfoTextView(businessInfo: $businessInfo, customers: customers)
                 }
                 .toolbar {
                     ToolbarItem(placement:.topBarLeading) {
