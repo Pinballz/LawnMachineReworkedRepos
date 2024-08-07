@@ -10,19 +10,17 @@ import SwiftData
 
 struct CustomerView: View {
     
-    @Environment(\.modelContext) private var context
+    @Environment(\.modelContext) var context
     
     @Binding var businessInfo: BusinessInfo
     
-    @ObservedObject var customers: CustomerViewModel
-    
-    @Query private var dataStorage: [DataStorage]
+    @Query var customers: [NewCustomer]
     
     var body: some View {
         NavigationStack {
             ZStack {
                 VStack {
-                    if customers.customers.isEmpty {
+                    if customers.isEmpty {
                         Form {
                             HStack{
                                 Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
@@ -34,20 +32,15 @@ struct CustomerView: View {
                             HStack {
                                 Text("My Customers")
                             }
-                            ForEach(customers.customers) { customer in
-                                NavigationLink(destination: CustomerDetailView(businessInfo: $businessInfo, customers: customers, customerInfo: customer )){
+                            ForEach(customers) { customer in
+                                NavigationLink(destination: CustomerDetailView(businessInfo: $businessInfo, customers: customer)) {
                                     HStack {
                                         Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
                                         Text(customer.name).foregroundStyle(.black)
                                     }
                                 }
-                            }.onDelete { indexes in
-                                for index in indexes {
-                                    deleteSavedData(dataStorage[index])
-                                    delete(at: indexes)
-                                }
-                                
                             }
+                            .onDelete(perform: deleteCustomers)
                         }
                     }
                 }
@@ -56,6 +49,7 @@ struct CustomerView: View {
                         Text("Lawn Machine")
                             .font(.system(size: 32,weight: .bold))
                             .foregroundStyle(LMColor.logoColor)
+                        
                     }
                 }
                 .foregroundColor(LMColor.logoColor)
@@ -64,18 +58,25 @@ struct CustomerView: View {
             }
         }
     }
-    func delete(at offsets: IndexSet) {
-        for i in offsets.makeIterator() {
-            let sub = customers.customers[i]
-            businessInfo.subIncome -= sub.subscription
+    
+    func deleteCustomers(_ indexSet: IndexSet) {
+        for index in indexSet {
+            let customer = customers[index]
+            context.delete(customer)
         }
-        customers.removeCustomers(offsets: offsets)
     }
-    func deleteSavedData(_ customerSaved: DataStorage) {
-        
-    }
+    
+//    func delete(at offsets: IndexSet) {
+//        for i in offsets.makeIterator() {
+//            let sub = customers[i]
+//            businessInfo.subIncome -= sub.subscription
+//        }
+//    }
+//    func deleteSavedData(_ customerSaved: DataStorage) {
+//        
+//    }
 }
 
 #Preview {
-    CustomerView(businessInfo: Binding.constant(BusinessInfo()), customers: CustomerViewModel())
+    CustomerView(businessInfo: Binding.constant(BusinessInfo()))
 }

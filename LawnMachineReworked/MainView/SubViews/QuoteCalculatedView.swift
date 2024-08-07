@@ -10,7 +10,7 @@ import SwiftData
 
 struct QuoteCalculatedView: View {
     
-    @Environment(\.modelContext) private var context
+    @Environment(\.modelContext) var context
     
     @Environment(\.dismiss) var dismiss
     
@@ -18,9 +18,7 @@ struct QuoteCalculatedView: View {
     
     @Binding var businessInfo: BusinessInfo
     
-    @ObservedObject var customers: CustomerViewModel
-    
-    @Query private var dataStorage: [DataStorage]
+    @Query var customers: [NewCustomer]
     
     var body: some View {
         
@@ -29,7 +27,7 @@ struct QuoteCalculatedView: View {
         NavigationStack {
             VStack {
                 Form {
-                    QuoteCalcTextView(myQuote: $myQuote, businessInfo: $businessInfo, customers: CustomerViewModel())
+                    QuoteCalcTextView(myQuote: $myQuote, businessInfo: $businessInfo)
                     Button("Add This Property") {
                         addNewCustomer()
                         completeCalculation()
@@ -53,18 +51,12 @@ struct QuoteCalculatedView: View {
             subscription: myQuote.newSub, address: myQuote.newAddress,
             dateSubmitted: myQuote.newDate, sqrft: myQuote.sqrft, hedgeTotal: myQuote.hedgeTotal,priceChosen: myQuote.priceChosen)
         
-        customers.getCustomers(newCustomer:newCustomers)
+//        let subIncome = [newCustomers.subscription]
+//        let subAdd = subIncome.reduce(0,+) + businessInfo.subIncome
+//        
+//        businessInfo.subIncome = subAdd
         
-        let subIncome = [newCustomers.subscription]
-        let subAdd = subIncome.reduce(0,+) + businessInfo.subIncome
-        
-        businessInfo.subIncome = subAdd
-        
-        let savedCustomer = DataStorage(name: myQuote.newName, subscription: myQuote.newSub, address: myQuote.newAddress, dateSubmitted: myQuote.newDate, sqrft: myQuote.sqrft, hedgeTotal: myQuote.hedgeTotal, priceChosen: myQuote.priceChosen, subIncome: subAdd)
-        
-        print(customers.customers)
-        
-        context.insert(savedCustomer)
+        context.insert(newCustomers)
     }
     func completeCalculation() {
         myQuote.newName = ""
@@ -78,5 +70,5 @@ struct QuoteCalculatedView: View {
 }
 
 #Preview {
-    QuoteCalculatedView(myQuote: Binding.constant(PropertyInfo()), businessInfo: Binding.constant(BusinessInfo()), customers: CustomerViewModel())
+    QuoteCalculatedView(myQuote: Binding.constant(PropertyInfo()), businessInfo: Binding.constant(BusinessInfo()))
 }

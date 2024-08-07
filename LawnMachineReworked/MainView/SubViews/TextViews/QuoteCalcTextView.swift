@@ -13,9 +13,8 @@ struct QuoteCalcTextView: View {
     
     @Binding var businessInfo: BusinessInfo
     
-    @ObservedObject var customers: CustomerViewModel
-    
     var body: some View {
+        
         var totalYardCost: Double {
             Double(myQuote.sqrft ?? 0) * myQuote.priceChosen
         }
@@ -41,5 +40,5 @@ struct QuoteCalcTextView: View {
 }
 
 #Preview {
-    QuoteCalcTextView(myQuote: Binding.constant(PropertyInfo()), businessInfo: Binding.constant(BusinessInfo()), customers: CustomerViewModel())
+    QuoteCalcTextView(myQuote: Binding.constant(PropertyInfo()), businessInfo: Binding.constant(BusinessInfo()))
 }

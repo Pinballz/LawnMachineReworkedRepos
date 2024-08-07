@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 struct PropertyInfo: Identifiable {
     let id = UUID()
     var newName = ""

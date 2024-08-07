@@ -13,29 +13,25 @@ import SwiftData
 
 struct MainTabView: View {
 
-    @Environment(\.modelContext) private var context
-    
-    @Query private var dataStorage: [DataStorage]
-    
-    @ObservedObject private var customers = CustomerViewModel()
-    
+    @Environment(\.modelContext) var context
+
     @State private var myQuote = PropertyInfo()
     
     @State private var businessInfo = BusinessInfo()
     
     var body: some View {
         TabView {
-            CustomerView(businessInfo: $businessInfo, customers: customers)
+            CustomerView(businessInfo: $businessInfo)
                 .tabItem {
-                    Image(systemName: "house")
+                    Label("Accounts", systemImage: "house")
                 }
-            QuoteGeneratorView(myQuote: $myQuote, businessInfo: $businessInfo, customers: customers)
+            QuoteGeneratorView(myQuote: $myQuote, businessInfo: $businessInfo)
                 .tabItem {
-                    Image(systemName: "pencil.and.scribble")
+                    Label("Quote", systemImage: "pencil.and.scribble")
                 }
-            BusinessInfoView(businessInfo: $businessInfo, customers: customers)
+            BusinessInfoView(businessInfo: $businessInfo)
                 .tabItem {
-                    Image(systemName: "book.pages")
+                    Label("The Books", systemImage: "book.pages")
                 }
         }.tint(LMColor.logoColor)
             .onAppear {

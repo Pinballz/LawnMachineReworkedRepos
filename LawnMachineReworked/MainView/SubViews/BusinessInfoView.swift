@@ -12,17 +12,11 @@ struct BusinessInfoView: View {
     
     @Binding var businessInfo: BusinessInfo
     
-    @StateObject var customers: CustomerViewModel
-    
-    @Query private var dataStorage: [DataStorage]
-    
-
-    
     var body: some View {
         NavigationStack {
             VStack {
                 Form {
-                    BisInfoTextView(businessInfo: $businessInfo, customers: customers)
+                    BisInfoTextView(businessInfo: $businessInfo)
                 }
                 .toolbar {
                     ToolbarItem(placement:.topBarLeading) {
@@ -30,7 +24,6 @@ struct BusinessInfoView: View {
                             .font(.system(size: 32,weight: .bold))
                             .foregroundStyle(LMColor.logoColor)
                     }
-                    
                 }
                 .scrollContentBackground(.hidden)
                 .foregroundColor(LMColor.logoColor)
@@ -41,5 +34,5 @@ struct BusinessInfoView: View {
 }
 
 #Preview {
-    BusinessInfoView(businessInfo: .constant(BusinessInfo()), customers: CustomerViewModel())
+    BusinessInfoView(businessInfo: .constant(BusinessInfo()))
 }

@@ -6,35 +6,31 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct QuoteGeneratorView: View {
+    
+    @Environment(\.modelContext) var context
     
     @Binding var myQuote: PropertyInfo
     @Binding var businessInfo: BusinessInfo
     
-    @State private var name = ""
-    @State private var subscription = 0
-    @State private var address = ""
-    @State private var date = Date.now
-    @State private var totalSqrft: Int?
-    @State private var hedgeTotal: Int?
-    @State private var priceChosen = 0.0
     @State private var showingQuoteCalculatedView = false
     
-    @ObservedObject var customers: CustomerViewModel
+    @Query var customers: [NewCustomer]
     
     var body: some View {
         NavigationStack{
             ZStack {
                 VStack {
                     Form {
-                        QuoteGenTextView(myQuote: $myQuote, businessInfo: $businessInfo, customers: CustomerViewModel())
+                        QuoteGenTextView(myQuote: $myQuote, businessInfo: $businessInfo)
                         Button("Calculate") {
                             showingQuoteCalculatedView.toggle()
                             quoteCalculator(sqrft: myQuote.sqrft ?? 0 )
                         }
                         .sheet(isPresented: $showingQuoteCalculatedView) {
-                            QuoteCalculatedView(myQuote: $myQuote, businessInfo: $businessInfo, customers: customers)
+                            QuoteCalculatedView(myQuote: $myQuote, businessInfo: $businessInfo)
                         }
                         Button("Clear Estimate") {
                             clearEstimate()
@@ -68,7 +64,6 @@ struct QuoteGeneratorView: View {
         myQuote.newSub = Int(total)
     }
     func clearEstimate() {
-        //clearing values made by user
         myQuote.newName = ""
         myQuote.newSub = 0
         myQuote.newAddress = ""
@@ -80,5 +75,5 @@ struct QuoteGeneratorView: View {
 }
 
 #Preview {
-    QuoteGeneratorView(myQuote: .constant(PropertyInfo()), businessInfo: .constant(BusinessInfo()), customers: CustomerViewModel())
+    QuoteGeneratorView(myQuote: .constant(PropertyInfo()), businessInfo: .constant(BusinessInfo()))
 }

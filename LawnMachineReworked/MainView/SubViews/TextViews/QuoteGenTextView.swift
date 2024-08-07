@@ -12,7 +12,7 @@ struct QuoteGenTextView: View {
     @Binding var myQuote: PropertyInfo
     @Binding var businessInfo: BusinessInfo
     @State private var pricePerSqrft: [Double] = [0.01, 0.02, 0.03,0.04, 0.05, 0.06]
-    @ObservedObject var customers: CustomerViewModel
+//    @ObservedObject var customers: CustomerViewModel
     
     var body: some View {
         Section{
@@ -55,5 +55,5 @@ struct QuoteGenTextView: View {
 }
 
 #Preview {
-    QuoteGenTextView(myQuote: Binding.constant(PropertyInfo()), businessInfo: Binding.constant(BusinessInfo()), customers: CustomerViewModel())
+    QuoteGenTextView(myQuote: Binding.constant(PropertyInfo()), businessInfo: Binding.constant(BusinessInfo()))
 }

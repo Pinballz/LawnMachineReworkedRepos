@@ -6,18 +6,20 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct BisInfoTextView: View {
     
+    @Environment(\.modelContext) private var context
+    
     @Binding var businessInfo: BusinessInfo
     
-    @StateObject var customers: CustomerViewModel
+    @Query var customers: [NewCustomer]
     
     var body: some View {
-    
         
             Section{
-                Text("\(customers.customers.count)").foregroundStyle(.black)
+                Text("\(customers.count)").foregroundStyle(.black)
             }header: {
                 Text("Your total accounts")
             }
@@ -26,10 +28,9 @@ struct BisInfoTextView: View {
             }header: {
                 Text("Your total Subscription income")
             }
-        
     }
 }
 
 #Preview {
-    BisInfoTextView(businessInfo: Binding.constant(BusinessInfo()), customers: CustomerViewModel())
+    BisInfoTextView(businessInfo: Binding.constant(BusinessInfo()))
 }

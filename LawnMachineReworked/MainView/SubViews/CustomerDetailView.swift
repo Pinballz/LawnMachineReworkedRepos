@@ -12,11 +12,7 @@ struct CustomerDetailView: View {
     
     @Binding var businessInfo: BusinessInfo
     
-    @StateObject var customers: CustomerViewModel
-    
-    let customerInfo: NewCustomer 
-    
-    @Query private let dataStorage: [DataStorage]
+    @Bindable var customers: NewCustomer
     
     var body: some View {
         
@@ -27,7 +23,7 @@ struct CustomerDetailView: View {
                                 Section {
                                     HStack {
                                         Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
-                                        Text(customerInfo.address).foregroundStyle(.black)
+                                        Text(customers.address).foregroundStyle(.black)
                                     }
                                 } header:  {
                                     Text("Address")
@@ -35,7 +31,7 @@ struct CustomerDetailView: View {
                                 Section {
                                     HStack {
                                         Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
-                                        Text(customerInfo.subscription , format: .currency(code: "USD")).foregroundStyle(.black)
+                                        Text(customers.subscription , format: .currency(code: "USD")).foregroundStyle(.black)
                                     }
                                 } header: {
                                     Text("Monthly Subscription")
@@ -43,7 +39,7 @@ struct CustomerDetailView: View {
                                 Section {
                                     HStack {
                                         Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
-                                        Text(customerInfo.dateSubmitted, format: .dateTime.month(.wide).day().year()).foregroundStyle(.black)
+                                        Text(customers.dateSubmitted, format: .dateTime.month(.wide).day().year()).foregroundStyle(.black)
                                     }
                                 } header: {
                                     Text("Loyal Since")
@@ -66,5 +62,13 @@ struct CustomerDetailView: View {
 }
 
 #Preview {
-    CustomerDetailView(businessInfo: Binding.constant(BusinessInfo()), customers: CustomerViewModel(), customerInfo: CustomerViewModel().customers.first!)
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: NewCustomer.self, configurations: config)
+        let example = NewCustomer(name: "", subscription: Int(), address: "", dateSubmitted: Date(), sqrft: Int(), hedgeTotal: Int(), priceChosen: Double())
+       return CustomerDetailView(businessInfo: Binding.constant(BusinessInfo()), customers: example)
+            .modelContainer(container)
+    } catch {
+        fatalError("Failed to create model container.")
+    }
 }

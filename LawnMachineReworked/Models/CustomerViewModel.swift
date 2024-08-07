@@ -8,7 +8,8 @@
 import Foundation
 import SwiftData
 
-struct NewCustomer: Identifiable, Encodable {
+@Model
+class NewCustomer: Identifiable {
      let id = UUID()
      let name: String
      let subscription: Int
@@ -17,16 +18,15 @@ struct NewCustomer: Identifiable, Encodable {
      let sqrft: Int?
      let hedgeTotal: Int?
      let priceChosen: Double
-}
-
-
-final class CustomerViewModel: ObservableObject {
-   @Published var customers: [NewCustomer] = []
-    func getCustomers(newCustomer: NewCustomer) {
-        customers.append(newCustomer)
-    }
-    func removeCustomers(offsets: IndexSet) {
-        customers.remove(atOffsets: offsets)
+    
+    init(name: String, subscription: Int, address: String, dateSubmitted: Date, sqrft: Int?, hedgeTotal: Int?, priceChosen: Double) {
+        self.name = name
+        self.subscription = subscription
+        self.address = address
+        self.dateSubmitted = dateSubmitted
+        self.sqrft = sqrft
+        self.hedgeTotal = hedgeTotal
+        self.priceChosen = priceChosen
     }
 }
 

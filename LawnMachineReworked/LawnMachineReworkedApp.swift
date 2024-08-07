@@ -7,12 +7,13 @@
 
 import SwiftUI
 import SwiftData
+
 @main
 struct LawnMachineReworkedApp: App {
     var body: some Scene {
         WindowGroup {
             MainTabView()
         }
-        .modelContainer(for: DataStorage.self)
+        .modelContainer(for: NewCustomer.self)
     }
 }
