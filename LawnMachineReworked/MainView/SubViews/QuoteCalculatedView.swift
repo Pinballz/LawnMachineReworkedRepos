@@ -47,7 +47,7 @@ struct QuoteCalculatedView: View {
         let newCustomers = NewCustomer(
             name: myQuote.newName,
             subscription: myQuote.newSub!, address: myQuote.newAddress,
-            dateSubmitted: myQuote.newDate, sqrft: myQuote.sqrft, hedgeTotal: myQuote.hedgeTotal,priceChosen: myQuote.priceChosen, totalSubIncome: myQuote.newSub)
+            dateSubmitted: myQuote.newDate, sqrft: myQuote.sqrft, hedgeTotal: myQuote.hedgeTotal,priceChosen: myQuote.priceChosen, notes: myQuote.notes)
 
         context.insert(newCustomers)
     }

@@ -14,7 +14,11 @@ struct CustomerView: View {
     
     @Binding var businessInfo: BusinessInfo
     
+    @Binding var myQuote: PropertyInfo
+    
     @Query var customers: [NewCustomer]
+    
+    @State private var path = [NewCustomer]()
     
     var body: some View {
         NavigationStack {
@@ -33,7 +37,7 @@ struct CustomerView: View {
                                 Text("My Customers")
                             }
                             ForEach(customers) { customer in
-                                NavigationLink(destination: CustomerDetailView(businessInfo: $businessInfo, customers: customer)) {
+                                NavigationLink(destination: CustomerDetailView(businessInfo: $businessInfo, myQuote: $myQuote, customers: customer)) {
                                     HStack {
                                         Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
                                         Text(customer.name).foregroundStyle(.black)
@@ -68,5 +72,5 @@ struct CustomerView: View {
 }
 
 #Preview {
-    CustomerView(businessInfo: Binding.constant(BusinessInfo()))
+    CustomerView(businessInfo: Binding.constant(BusinessInfo()), myQuote: Binding.constant(PropertyInfo()))
 }

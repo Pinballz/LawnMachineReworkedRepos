@@ -16,4 +16,5 @@ struct PropertyInfo: Identifiable {
     var sqrft: Int?
     var hedgeTotal:Int?
     var priceChosen = 0.0
+    var notes = ""
 }

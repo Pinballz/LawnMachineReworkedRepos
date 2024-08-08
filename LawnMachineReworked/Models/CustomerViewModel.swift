@@ -18,9 +18,9 @@ class NewCustomer: Identifiable {
     let sqrft: Int?
     let hedgeTotal: Int?
     let priceChosen: Double
-    let totalSubIncome: Int?
+    var notes: String
     
-    init(name: String, subscription: Int, address: String, dateSubmitted: Date, sqrft: Int?, hedgeTotal: Int?, priceChosen: Double, totalSubIncome: Int?) {
+    init(name: String, subscription: Int, address: String, dateSubmitted: Date, sqrft: Int?, hedgeTotal: Int?, priceChosen: Double, notes: String) {
         self.name = name
         self.subscription = subscription
         self.address = address
@@ -28,7 +28,7 @@ class NewCustomer: Identifiable {
         self.sqrft = sqrft
         self.hedgeTotal = hedgeTotal
         self.priceChosen = priceChosen
-        self.totalSubIncome = totalSubIncome
+        self.notes = notes
     }
 }
 
@@ -39,5 +39,24 @@ extension Double {
         formatter.minimumFractionDigits = 0
         formatter.maximumFractionDigits = 2
         return String(formatter.string(from: number) ?? "")
+    }
+}
+
+extension Optional where Wrapped == String {
+    var _bound: String? {
+        get {
+            return self
+        }
+        set {
+            self = newValue
+        }
+    }
+    public var bound: String {
+        get {
+            return _bound ?? ""
+        }
+        set {
+            _bound = newValue.isEmpty ? nil : newValue
+        }
     }
 }

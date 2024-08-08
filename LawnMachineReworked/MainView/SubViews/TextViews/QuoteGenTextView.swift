@@ -141,6 +141,22 @@ struct QuoteGenTextView: View {
                 }
             }
         }
+        Section{
+            HStack {
+                Spacer()
+                TextField("Enter",text: $myQuote.notes, axis: .vertical).foregroundColor(.black).keyboardType(.default)
+                    .multilineTextAlignment(.center)
+                Spacer()
+            }
+        }header: {
+            HStack {
+                Spacer()
+                Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
+                Text("Notes").foregroundStyle(.black)
+                Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
+                Spacer()
+            }
+        }
         Section {
             DatePicker(selection: $myQuote.newDate,displayedComponents: .date) {
                 Text("Quote Date")

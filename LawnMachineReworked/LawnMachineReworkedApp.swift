@@ -10,6 +10,7 @@ import SwiftData
 
 @main
 struct LawnMachineReworkedApp: App {
+
     var body: some Scene {
         WindowGroup {
             MainTabView()

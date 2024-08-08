@@ -8,9 +8,6 @@
 import SwiftUI
 import SwiftData
 
-
-
-
 struct MainTabView: View {
     
     @Environment(\.modelContext) var context
@@ -21,7 +18,7 @@ struct MainTabView: View {
     
     var body: some View {
         TabView {
-            CustomerView(businessInfo: $businessInfo)
+            CustomerView(businessInfo: $businessInfo, myQuote: $myQuote)
                 .tabItem {
                     Label("Accounts", systemImage: "house")
                 }

@@ -76,6 +76,7 @@ struct QuoteGeneratorView: View {
         myQuote.sqrft = nil
         myQuote.hedgeTotal = nil
         myQuote.priceChosen = 0.0
+        myQuote.notes = ""
     }
 }
 

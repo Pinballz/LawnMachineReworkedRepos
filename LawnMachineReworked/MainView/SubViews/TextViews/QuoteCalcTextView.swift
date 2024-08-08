@@ -28,21 +28,81 @@ struct QuoteCalcTextView: View {
         
         if myQuote.hedgeTotal != nil && myQuote.sqrft != nil {
             Section{
-                Text("Your total cost is \(Int(total))").foregroundColor(.black)
+                HStack {
+                    Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
+                    Text("\(myQuote.newName)").foregroundColor(.black)
+                }
+            }header: {
+                Text("Customer Name")
+            }
+            Section{
+                HStack {
+                    Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
+                    Text("\(myQuote.newAddress)").foregroundColor(.black)
+                }
+            }header: {
+                Text("Address")
+            }
+            Section{
+                HStack {
+                    Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
+                    Text(" \(Int(total))").foregroundColor(.black)
+                }
             }header: {
                 Text("Total")
             }
             Section{
-                Text("Regular Cut cost: \(Int(totalYardCost))").foregroundColor(.black)
-                Text("Cost of \(myQuote.hedgeTotal ?? 0) hedges: \(totalHedgeCost)").foregroundColor(.black)
+                HStack {
+                    Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
+                    Text("Regular Cut cost: \(Int(totalYardCost))").foregroundColor(.black)
+                }
+                HStack {
+                    Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
+                    Text("Cost of \(myQuote.hedgeTotal ?? 0) hedges: \(totalHedgeCost)").foregroundColor(.black)
+                }
             }header: {
                 Text("Quote Breakdown")
             }
+            Section{
+                HStack {
+                    Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
+                    Text("\(myQuote.notes)").foregroundColor(.black)
+                }
+            }header: {
+                Text("Notes for this house")
+            }
         } else {
             Section{
-                Text("Your subscription total is: \(myQuote.newSub ?? 0)").foregroundColor(.black)
+                HStack {
+                    Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
+                    Text("\(myQuote.newName)").foregroundColor(.black)
+                }
+            }header: {
+                Text("Customer Name")
+            }
+            Section{
+                HStack {
+                    Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
+                    Text("\(myQuote.newAddress)").foregroundColor(.black)
+                }
+            }header: {
+                Text("Address")
+            }
+            Section{
+                HStack {
+                    Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
+                    Text("\(myQuote.newSub ?? 0)").foregroundColor(.black)
+                }
             }header: {
                 Text("Total")
+            }
+            Section{
+                HStack {
+                    Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
+                    Text("\(myQuote.notes)").foregroundColor(.black)
+                }
+            }header: {
+                Text("Notes")
             }
         }
     }

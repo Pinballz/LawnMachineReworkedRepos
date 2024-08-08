@@ -23,14 +23,36 @@ struct BisInfoTextView: View {
         let sum = customers.map({$0.subscription}).reduce(0,+)
         
         Section{
-            Text("\(customers.count)").foregroundStyle(.black)
+            HStack {
+                Spacer()
+                Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
+                Text("\(customers.count)").foregroundStyle(.black)
+                Spacer()
+            }
         }header: {
-            Text("Your total accounts")
+            HStack {
+                Spacer()
+                Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
+                Text("Your total accounts").foregroundStyle(.black)
+                Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
+                Spacer()
+            }
         }
         Section{
-            Text("\(Int(sum))").foregroundStyle(.black)
+            HStack {
+                Spacer()
+                Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
+                Text("\(Int(sum))").foregroundStyle(.black)
+                Spacer()
+            }
         }header: {
-            Text("Your total Subscription income")
+            HStack {
+                Spacer()
+                Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
+                Text("Your total Subscription income").foregroundStyle(.black)
+                Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
+                Spacer()
+            }
         }
     }
 }
@@ -39,7 +61,7 @@ struct BisInfoTextView: View {
     do {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: NewCustomer.self, configurations: config)
-        let example = NewCustomer(name: "", subscription: Int(), address: "", dateSubmitted: Date(), sqrft: Int(), hedgeTotal: Int(), priceChosen: Double(), totalSubIncome: Int())
+        let example = NewCustomer(name: "", subscription: Int(), address: "", dateSubmitted: Date(), sqrft: Int(), hedgeTotal: Int(), priceChosen: Double(), notes: "")
         return  BisInfoTextView(businessInfo: Binding.constant(BusinessInfo()), myCustomers: example)
             .modelContainer(container)
     } catch {
