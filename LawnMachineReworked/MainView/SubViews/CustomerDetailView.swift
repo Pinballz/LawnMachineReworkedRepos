@@ -15,7 +15,7 @@ struct CustomerDetailView: View {
     @Bindable var customers: NewCustomer
     
     var body: some View {
-        
+
         NavigationStack {
             ZStack {
                 VStack {
@@ -59,13 +59,21 @@ struct CustomerDetailView: View {
             }
         }
     }
+    
+    func subscriptionTotal() {
+        let customerSub = customers.subscription
+        var totalSubs = [businessInfo.subIncome]
+        
+        totalSubs.append(customerSub)
+        businessInfo.subIncome = totalSubs.reduce(0,+)
+    }
 }
 
 #Preview {
     do {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: NewCustomer.self, configurations: config)
-        let example = NewCustomer(name: "", subscription: Int(), address: "", dateSubmitted: Date(), sqrft: Int(), hedgeTotal: Int(), priceChosen: Double())
+        let example = NewCustomer(name: "", subscription: Int(), address: "", dateSubmitted: Date(), sqrft: Int(), hedgeTotal: Int(), priceChosen: Double(), totalSubIncome: Int())
        return CustomerDetailView(businessInfo: Binding.constant(BusinessInfo()), customers: example)
             .modelContainer(container)
     } catch {

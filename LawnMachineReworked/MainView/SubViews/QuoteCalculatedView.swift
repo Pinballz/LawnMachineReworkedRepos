@@ -45,11 +45,11 @@ struct QuoteCalculatedView: View {
         }
     }
     func addNewCustomer() {
-        //Array of customer info appended
+        
         let newCustomers = NewCustomer(
             name: myQuote.newName,
             subscription: myQuote.newSub, address: myQuote.newAddress,
-            dateSubmitted: myQuote.newDate, sqrft: myQuote.sqrft, hedgeTotal: myQuote.hedgeTotal,priceChosen: myQuote.priceChosen)
+            dateSubmitted: myQuote.newDate, sqrft: myQuote.sqrft, hedgeTotal: myQuote.hedgeTotal,priceChosen: myQuote.priceChosen, totalSubIncome: myQuote.newSub)
         
 //        let subIncome = [newCustomers.subscription]
 //        let subAdd = subIncome.reduce(0,+) + businessInfo.subIncome

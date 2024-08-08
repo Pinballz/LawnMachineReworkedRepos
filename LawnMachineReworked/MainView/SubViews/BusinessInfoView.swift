@@ -16,7 +16,7 @@ struct BusinessInfoView: View {
         NavigationStack {
             VStack {
                 Form {
-                    BisInfoTextView(businessInfo: $businessInfo)
+                    BisInfoTextView(businessInfo: $businessInfo, myCustomers: NewCustomer(name: "", subscription: Int(), address: "", dateSubmitted: Date(), sqrft: Int(), hedgeTotal: Int(), priceChosen: Double(), totalSubIncome: Int()))
                 }
                 .toolbar {
                     ToolbarItem(placement:.topBarLeading) {

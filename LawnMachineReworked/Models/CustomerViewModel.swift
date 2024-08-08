@@ -18,8 +18,9 @@ class NewCustomer: Identifiable {
      let sqrft: Int?
      let hedgeTotal: Int?
      let priceChosen: Double
+     let totalSubIncome: Int?
     
-    init(name: String, subscription: Int, address: String, dateSubmitted: Date, sqrft: Int?, hedgeTotal: Int?, priceChosen: Double) {
+    init(name: String, subscription: Int, address: String, dateSubmitted: Date, sqrft: Int?, hedgeTotal: Int?, priceChosen: Double, totalSubIncome: Int?) {
         self.name = name
         self.subscription = subscription
         self.address = address
@@ -27,6 +28,7 @@ class NewCustomer: Identifiable {
         self.sqrft = sqrft
         self.hedgeTotal = hedgeTotal
         self.priceChosen = priceChosen
+        self.totalSubIncome = totalSubIncome
     }
 }
 
