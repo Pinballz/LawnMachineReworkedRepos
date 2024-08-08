@@ -10,15 +10,15 @@ import SwiftData
 
 @Model
 class NewCustomer: Identifiable {
-     let id = UUID()
-     let name: String
-     let subscription: Int
-     let address: String
-     let dateSubmitted: Date
-     let sqrft: Int?
-     let hedgeTotal: Int?
-     let priceChosen: Double
-     let totalSubIncome: Int?
+    let id = UUID()
+    let name: String
+    let subscription: Int
+    let address: String
+    let dateSubmitted: Date
+    let sqrft: Int?
+    let hedgeTotal: Int?
+    let priceChosen: Double
+    let totalSubIncome: Int?
     
     init(name: String, subscription: Int, address: String, dateSubmitted: Date, sqrft: Int?, hedgeTotal: Int?, priceChosen: Double, totalSubIncome: Int?) {
         self.name = name

@@ -21,9 +21,7 @@ struct QuoteCalculatedView: View {
     @Query var customers: [NewCustomer]
     
     var body: some View {
-        
 
-        
         NavigationStack {
             VStack {
                 Form {
@@ -48,19 +46,14 @@ struct QuoteCalculatedView: View {
         
         let newCustomers = NewCustomer(
             name: myQuote.newName,
-            subscription: myQuote.newSub, address: myQuote.newAddress,
+            subscription: myQuote.newSub!, address: myQuote.newAddress,
             dateSubmitted: myQuote.newDate, sqrft: myQuote.sqrft, hedgeTotal: myQuote.hedgeTotal,priceChosen: myQuote.priceChosen, totalSubIncome: myQuote.newSub)
-        
-//        let subIncome = [newCustomers.subscription]
-//        let subAdd = subIncome.reduce(0,+) + businessInfo.subIncome
-//        
-//        businessInfo.subIncome = subAdd
-        
+
         context.insert(newCustomers)
     }
     func completeCalculation() {
         myQuote.newName = ""
-        myQuote.newSub = 0
+        myQuote.newSub = nil
         myQuote.newAddress = ""
         myQuote.newDate = Date.now
         myQuote.sqrft = nil

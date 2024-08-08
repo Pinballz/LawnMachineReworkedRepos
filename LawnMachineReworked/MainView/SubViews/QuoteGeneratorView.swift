@@ -13,6 +13,7 @@ struct QuoteGeneratorView: View {
     @Environment(\.modelContext) var context
     
     @Binding var myQuote: PropertyInfo
+    
     @Binding var businessInfo: BusinessInfo
     
     @State private var showingQuoteCalculatedView = false
@@ -26,8 +27,12 @@ struct QuoteGeneratorView: View {
                     Form {
                         QuoteGenTextView(myQuote: $myQuote, businessInfo: $businessInfo)
                         Button("Calculate") {
-                            showingQuoteCalculatedView.toggle()
-                            quoteCalculator(sqrft: myQuote.sqrft ?? 0 )
+                            if myQuote.newSub == nil {
+                                showingQuoteCalculatedView.toggle()
+                                quoteCalculator(sqrft: myQuote.sqrft ?? 0 )
+                            } else {
+                                showingQuoteCalculatedView.toggle()
+                            }
                         }
                         .sheet(isPresented: $showingQuoteCalculatedView) {
                             QuoteCalculatedView(myQuote: $myQuote, businessInfo: $businessInfo)

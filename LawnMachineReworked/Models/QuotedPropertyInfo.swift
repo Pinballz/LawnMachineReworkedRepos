@@ -10,7 +10,7 @@ import Foundation
 struct PropertyInfo: Identifiable {
     let id = UUID()
     var newName = ""
-    var newSub = 0
+    var newSub: Int?
     var newAddress = ""
     var newDate = Date.now
     var sqrft: Int?

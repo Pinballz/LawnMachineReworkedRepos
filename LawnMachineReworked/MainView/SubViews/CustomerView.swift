@@ -65,16 +65,6 @@ struct CustomerView: View {
             context.delete(customer)
         }
     }
-    
-//    func delete(at offsets: IndexSet) {
-//        for i in offsets.makeIterator() {
-//            let sub = customers[i]
-//            businessInfo.subIncome -= sub.subscription
-//        }
-//    }
-//    func deleteSavedData(_ customerSaved: DataStorage) {
-//        
-//    }
 }
 
 #Preview {

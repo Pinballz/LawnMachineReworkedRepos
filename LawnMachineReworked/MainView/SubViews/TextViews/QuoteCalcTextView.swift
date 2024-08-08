@@ -25,16 +25,25 @@ struct QuoteCalcTextView: View {
             Double(totalHedgeCost) + totalYardCost
         }
         
-        Section{
-            Text("Your total cost is \(Int(total))").foregroundColor(.black)
-        }header: {
-            Text("Total")
-        }
-        Section{
-            Text("Regular Cut cost: \(Int(totalYardCost))").foregroundColor(.black)
-            Text("Cost of \(myQuote.hedgeTotal ?? 0) hedges: \(totalHedgeCost)").foregroundColor(.black)
-        }header: {
-            Text("Quote Breakdown")
+        
+        if myQuote.hedgeTotal != nil && myQuote.sqrft != nil {
+            Section{
+                Text("Your total cost is \(Int(total))").foregroundColor(.black)
+            }header: {
+                Text("Total")
+            }
+            Section{
+                Text("Regular Cut cost: \(Int(totalYardCost))").foregroundColor(.black)
+                Text("Cost of \(myQuote.hedgeTotal ?? 0) hedges: \(totalHedgeCost)").foregroundColor(.black)
+            }header: {
+                Text("Quote Breakdown")
+            }
+        } else {
+            Section{
+                Text("Your subscription total is: \(myQuote.newSub ?? 0)").foregroundColor(.black)
+            }header: {
+                Text("Total")
+            }
         }
     }
 }

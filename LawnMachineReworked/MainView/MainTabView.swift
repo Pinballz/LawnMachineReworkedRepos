@@ -12,9 +12,9 @@ import SwiftData
 
 
 struct MainTabView: View {
-
+    
     @Environment(\.modelContext) var context
-
+    
     @State private var myQuote = PropertyInfo()
     
     @State private var businessInfo = BusinessInfo()

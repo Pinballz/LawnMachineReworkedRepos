@@ -19,19 +19,19 @@ struct BisInfoTextView: View {
     @Bindable var myCustomers: NewCustomer
     
     var body: some View {
-// This is how I created total sub income
+        // This is how I created total sub income
         let sum = customers.map({$0.subscription}).reduce(0,+)
-
-            Section{
-                Text("\(customers.count)").foregroundStyle(.black)
-            }header: {
-                Text("Your total accounts")
-            }
-            Section{
-                Text("\(Int(sum))").foregroundStyle(.black)
-            }header: {
-                Text("Your total Subscription income")
-            }
+        
+        Section{
+            Text("\(customers.count)").foregroundStyle(.black)
+        }header: {
+            Text("Your total accounts")
+        }
+        Section{
+            Text("\(Int(sum))").foregroundStyle(.black)
+        }header: {
+            Text("Your total Subscription income")
+        }
     }
 }
 
