@@ -23,14 +23,16 @@ struct BisInfoTextView: View {
         CustomSectionView(headerTitle: "Your total accounts") {
             HStack {
                 Spacer()
-                Text("\(customers.count)").foregroundStyle(.black)
+                Text("\(customers.count)")
+                    .foregroundStyle(.black)
                 Spacer()
             }
         }
         CustomSectionView(headerTitle: "Your total subsctiption income") {
             HStack {
                 Spacer()
-                Text("\(Int(sum))").foregroundStyle(.black)
+                Text("\(Int(sum))")
+                    .foregroundStyle(.black)
                 Spacer()
             }
         }

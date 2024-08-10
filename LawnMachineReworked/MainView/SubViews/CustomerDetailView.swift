@@ -19,7 +19,6 @@ struct CustomerDetailView: View {
     @Bindable var customers: NewCustomer
     
     var body: some View {
-
         NavigationStack() {
             ZStack {
                 VStack {
@@ -27,51 +26,64 @@ struct CustomerDetailView: View {
                         Section {
                             HStack {
                                 Spacer()
-                                Text(customers.address).foregroundStyle(.black)
+                                Text(customers.address)
+                                    .foregroundStyle(.black)
                                 Spacer()
                             }
                         } header:  {
                             HStack {
-                                Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
-                                Text("Address").foregroundStyle(.black)
+                                Image(systemName:"gear")
+                                    .foregroundStyle(LMColor.logoColor)
+                                Text("Address")
+                                    .foregroundStyle(.black)
                             }
                         }
                         Section {
                             HStack {
                                 Spacer()
-                                Text(customers.subscription , format: .currency(code: "USD")).foregroundStyle(.black)
+                                Text(customers.subscription , format: .currency(code: "USD"))
+                                    .foregroundStyle(.black)
                                 Spacer()
                             }
                         } header: {
                             HStack {
-                                Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
-                                Text("Monthly Subscription").foregroundStyle(.black)
+                                Image(systemName:"gear")
+                                    .foregroundStyle(LMColor.logoColor)
+                                Text("Monthly Subscription")
+                                    .foregroundStyle(.black)
                             }
                         }
                         Section {
                             HStack {
                                 Spacer()
-                                Text(customers.dateSubmitted, format: .dateTime.month(.wide).day().year()).foregroundStyle(.black)
+                                Text(customers.dateSubmitted, format: .dateTime.month(.wide).day().year())
+                                    .foregroundStyle(.black)
                                 Spacer()
                             }
                         } header: {
                             HStack {
-                                Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
-                                Text("Loyal Since").foregroundStyle(.black)
+                                Image(systemName:"gear")
+                                    .foregroundStyle(LMColor.logoColor)
+                                Text("Loyal Since")
+                                    .foregroundStyle(.black)
                             }
                         }
                         Section{
                             HStack {
                                 Spacer()
-                                TextField("Enter",text: $customers.notes).foregroundColor(.black).keyboardType(.default)
-                                        .multilineTextAlignment(.center)
-                                        .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                                TextField("Enter",text: $customers.notes)
+                                    .foregroundColor(.black)
+                                    .keyboardType(.default)
+                                    .multilineTextAlignment(.center)
+                                    .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                                 Spacer()
                             }
                         }header: {
                             HStack {
-                                Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
-                                Text("Edit Your Note").foregroundStyle(.black)
+                                Image(systemName:"gear")
+                                    .foregroundStyle(LMColor.logoColor)
+                                Text("Edit Your Note")
+                                    .foregroundStyle(.black)
                             }
                         }
                     }
@@ -83,9 +95,12 @@ struct CustomerDetailView: View {
                                     Text("Lawn Machine")
                                         .font(.system(size: 28,weight: .bold))
                                         .foregroundStyle(LMColor.logoColor)
-                                    Image(systemName:"gear").foregroundStyle(LMColor.logoColor).font(.subheadline.bold())
+                                    Image(systemName:"gear")
+                                        .foregroundStyle(LMColor.logoColor)
+                                        .font(.subheadline.bold())
                                 }
-                                Text("\(customers.name)'s Information").foregroundStyle(LMColor.logoColor)
+                                Text("\(customers.name)'s Information")
+                                    .foregroundStyle(LMColor.logoColor)
                                     .font(.system(size: 15,weight: .regular))
                                 Spacer()
                                 Spacer()

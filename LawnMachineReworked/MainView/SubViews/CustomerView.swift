@@ -25,8 +25,10 @@ struct CustomerView: View {
                     if customers.isEmpty {
                         Form {
                             HStack{
-                                Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
-                                Text("Lets get some customers!").foregroundStyle(.black)
+                                Image(systemName:"gear")
+                                    .foregroundStyle(LMColor.logoColor)
+                                Text("Lets get some customers!")
+                                    .foregroundStyle(.black)
                             }
                         }.foregroundColor(LMColor.logoColor)
                     } else {
@@ -36,14 +38,17 @@ struct CustomerView: View {
                                 ForEach(customers) { customer in
                                     NavigationLink(destination: CustomerDetailView(myQuote: $myQuote, customers: customer)) {
                                         HStack {
-                                            Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
-                                            Text(customer.name).foregroundStyle(.black)
+                                            Image(systemName:"gear")
+                                                .foregroundStyle(LMColor.logoColor)
+                                            Text(customer.name)
+                                                .foregroundStyle(.black)
                                         }
                                     }
                                 }
                                 .onDelete(perform: deleteCustomers)
                             } header: {
-                                Text("Customers").foregroundColor(LMColor.logoColor)
+                                Text("Customers")
+                                    .foregroundColor(LMColor.logoColor)
                             }
                         }
                     }
@@ -55,7 +60,8 @@ struct CustomerView: View {
                                 Text("Lawn Machine")
                                     .font(.system(size: 32,weight: .bold))
                                     .foregroundStyle(LMColor.logoColor)
-                                Image(systemName:"gear").foregroundStyle(LMColor.logoColor).font(.title.bold())
+                                Image(systemName:"gear")
+                                    .foregroundStyle(LMColor.logoColor).font(.title.bold())
                             }
                         }
                     }

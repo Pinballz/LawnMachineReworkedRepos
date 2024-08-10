@@ -27,56 +27,68 @@ struct QuoteCalcTextView: View {
         if myQuote.hedgeTotal != nil && myQuote.sqrft != nil {
             CustomSectionView(headerTitle: "Customer Name") {
                 HStack {
-                    Text("\(myQuote.newName)").foregroundColor(.black)
+                    Text("\(myQuote.newName)")
+                        .foregroundColor(.black)
                 }
             }
             CustomSectionView(headerTitle:"Address") {
                 HStack {
-                    Text("\(myQuote.newAddress)").foregroundColor(.black)
+                    Text("\(myQuote.newAddress)")
+                        .foregroundColor(.black)
                 }
             }
             CustomSectionView(headerTitle: "Quote Breakdown") {
                 VStack {
                     HStack {
-                        Text("Regular Cut cost: ").foregroundStyle(LMColor.logoColor)
-                        Text("\(Int(totalYardCost))").foregroundColor(.black)
+                        Text("Regular Cut cost: ")
+                            .foregroundStyle(LMColor.logoColor)
+                        Text("\(Int(totalYardCost))")
+                            .foregroundColor(.black)
                     }
                     HStack {
-                        Text("Cost of \(myQuote.hedgeTotal ?? 0) hedges: ").foregroundStyle(LMColor.logoColor)
-                        Text("\(totalHedgeCost)").foregroundColor(.black)
+                        Text("Cost of \(myQuote.hedgeTotal ?? 0) hedges: ")
+                            .foregroundStyle(LMColor.logoColor)
+                        Text("\(totalHedgeCost)")
+                            .foregroundColor(.black)
                     }
                 }
             }
             CustomSectionView(headerTitle: "Total") {
                 HStack {
-                    Text(" \(Int(total))").foregroundColor(.black)
+                    Text(" \(Int(total))")
+                        .foregroundColor(.black)
                 }
             }
-
+            
             CustomSectionView(headerTitle: "Notes for this house") {
                 HStack {
-                    Text("\(myQuote.notes)").foregroundColor(.black)
+                    Text("\(myQuote.notes)")
+                        .foregroundColor(.black)
                 }
             }
         } else {
             CustomSectionView(headerTitle: "Customer Name") {
                 HStack {
-                    Text("\(myQuote.newName)").foregroundColor(.black)
+                    Text("\(myQuote.newName)")
+                        .foregroundColor(.black)
                 }
             }
             CustomSectionView(headerTitle: "Address") {
                 HStack {
-                    Text("\(myQuote.newAddress)").foregroundColor(.black)
+                    Text("\(myQuote.newAddress)")
+                        .foregroundColor(.black)
                 }
             }
             CustomSectionView(headerTitle: "Total") {
                 HStack {
-                    Text("\(myQuote.newSub ?? 0)").foregroundColor(.black)
+                    Text("\(myQuote.newSub ?? 0)")
+                        .foregroundColor(.black)
                 }
             }
             CustomSectionView(headerTitle: "Notes") {
                 HStack {
-                    Text("\(myQuote.notes)").foregroundColor(.black)
+                    Text("\(myQuote.notes)")
+                        .foregroundColor(.black)
                 }
             }
         }

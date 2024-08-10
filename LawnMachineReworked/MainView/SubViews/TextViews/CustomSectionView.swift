@@ -33,8 +33,10 @@ struct CustomHeader: View {
     
     var body: some View {
         HStack {
-            Image(systemName: "gear").foregroundStyle(LMColor.logoColor)
-            Text(title).foregroundStyle(.black)
+            Image(systemName: "gear")
+                .foregroundStyle(LMColor.logoColor)
+            Text(title)
+                .foregroundStyle(.black)
         }
     }
 }

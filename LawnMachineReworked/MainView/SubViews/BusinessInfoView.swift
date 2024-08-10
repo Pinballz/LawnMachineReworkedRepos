@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftData
 
 struct BusinessInfoView: View {
-    
     var body: some View {
         NavigationStack {
             VStack {
@@ -24,7 +23,9 @@ struct BusinessInfoView: View {
                                 Text("Lawn Machine")
                                     .font(.system(size: 32,weight: .bold))
                                     .foregroundStyle(LMColor.logoColor)
-                                Image(systemName:"gear").foregroundStyle(LMColor.logoColor).font(.title.bold())
+                                Image(systemName:"gear")
+                                    .foregroundStyle(LMColor.logoColor)
+                                    .font(.title.bold())
                             }
                             HStack {
                                 Text("Business Information")
