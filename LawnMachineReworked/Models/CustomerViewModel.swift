@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftData
+import UIKit
 
 @Model
 class NewCustomer: Identifiable {
@@ -32,31 +33,4 @@ class NewCustomer: Identifiable {
     }
 }
 
-extension Double {
-    func removeZerosFromEnd() -> String {
-        let formatter = NumberFormatter()
-        let number = NSNumber(value: self)
-        formatter.minimumFractionDigits = 0
-        formatter.maximumFractionDigits = 2
-        return String(formatter.string(from: number) ?? "")
-    }
-}
 
-extension Optional where Wrapped == String {
-    var _bound: String? {
-        get {
-            return self
-        }
-        set {
-            self = newValue
-        }
-    }
-    public var bound: String {
-        get {
-            return _bound ?? ""
-        }
-        set {
-            _bound = newValue.isEmpty ? nil : newValue
-        }
-    }
-}

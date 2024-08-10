@@ -16,8 +16,6 @@ struct QuoteCalculatedView: View {
     
     @Binding var myQuote: PropertyInfo
     
-    @Binding var businessInfo: BusinessInfo
-    
     @Query var customers: [NewCustomer]
     
     var body: some View {
@@ -25,7 +23,7 @@ struct QuoteCalculatedView: View {
         NavigationStack {
             VStack {
                 Form {
-                    QuoteCalcTextView(myQuote: $myQuote, businessInfo: $businessInfo)
+                    QuoteCalcTextView(myQuote: $myQuote)
                     Button("Add This Property") {
                         addNewCustomer()
                         completeCalculation()
@@ -59,9 +57,10 @@ struct QuoteCalculatedView: View {
         myQuote.sqrft = nil
         myQuote.hedgeTotal = nil
         myQuote.priceChosen = 0.0
+        myQuote.notes = ""
     }
 }
 
 #Preview {
-    QuoteCalculatedView(myQuote: Binding.constant(PropertyInfo()), businessInfo: Binding.constant(BusinessInfo()))
+    QuoteCalculatedView(myQuote: Binding.constant(PropertyInfo()))
 }

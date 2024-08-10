@@ -14,8 +14,6 @@ struct QuoteGeneratorView: View {
     
     @Binding var myQuote: PropertyInfo
     
-    @Binding var businessInfo: BusinessInfo
-    
     @State private var showingQuoteCalculatedView = false
     
     @Query var customers: [NewCustomer]
@@ -25,7 +23,7 @@ struct QuoteGeneratorView: View {
             ZStack {
                 VStack {
                     Form {
-                        QuoteGenTextView(myQuote: $myQuote, businessInfo: $businessInfo)
+                        QuoteGenTextView(myQuote: $myQuote)
                         Button("Calculate") {
                             if myQuote.newSub == nil {
                                 showingQuoteCalculatedView.toggle()
@@ -35,7 +33,7 @@ struct QuoteGeneratorView: View {
                             }
                         }
                         .sheet(isPresented: $showingQuoteCalculatedView) {
-                            QuoteCalculatedView(myQuote: $myQuote, businessInfo: $businessInfo)
+                            QuoteCalculatedView(myQuote: $myQuote)
                         }
                         Button("Clear Estimate") {
                             clearEstimate()
@@ -43,9 +41,23 @@ struct QuoteGeneratorView: View {
                     }
                     .toolbar {
                         ToolbarItem(placement:.topBarLeading) {
-                            Text("Lawn Machine")
-                                .font(.system(size: 32,weight: .bold))
-                                .foregroundStyle(LMColor.logoColor)
+                            VStack{
+                                Spacer()
+                                HStack {
+                                    Text("Lawn Machine")
+                                        .font(.system(size: 32,weight: .bold))
+                                        .foregroundStyle(LMColor.logoColor)
+                                    Image(systemName:"gear").foregroundStyle(LMColor.logoColor).font(.title.bold())
+                                }
+                                HStack {
+                                    Text("Create Your Quote")
+                                        .font(.system(size: 15,weight: .regular))
+                                        .foregroundStyle(LMColor.logoColor)
+                                    Spacer()
+                                }
+                                Spacer()
+                                Spacer()
+                            }
                         }
                     }
                 }
@@ -81,5 +93,5 @@ struct QuoteGeneratorView: View {
 }
 
 #Preview {
-    QuoteGeneratorView(myQuote: .constant(PropertyInfo()), businessInfo: .constant(BusinessInfo()))
+    QuoteGeneratorView(myQuote: .constant(PropertyInfo()))
 }

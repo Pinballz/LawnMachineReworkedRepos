@@ -14,19 +14,18 @@ struct MainTabView: View {
     
     @State private var myQuote = PropertyInfo()
     
-    @State private var businessInfo = BusinessInfo()
     
     var body: some View {
         TabView {
-            CustomerView(businessInfo: $businessInfo, myQuote: $myQuote)
+            CustomerView(myQuote: $myQuote)
                 .tabItem {
                     Label("Accounts", systemImage: "house")
                 }
-            QuoteGeneratorView(myQuote: $myQuote, businessInfo: $businessInfo)
+            QuoteGeneratorView(myQuote: $myQuote)
                 .tabItem {
                     Label("Quote", systemImage: "pencil.and.scribble")
                 }
-            BusinessInfoView(businessInfo: $businessInfo)
+            BusinessInfoView()
                 .tabItem {
                     Label("The Books", systemImage: "book.pages")
                 }

@@ -12,8 +12,6 @@ struct CustomerView: View {
     
     @Environment(\.modelContext) var context
     
-    @Binding var businessInfo: BusinessInfo
-    
     @Binding var myQuote: PropertyInfo
     
     @Query var customers: [NewCustomer]
@@ -33,27 +31,33 @@ struct CustomerView: View {
                         }.foregroundColor(LMColor.logoColor)
                     } else {
                         Form {
-                            HStack {
-                                Text("My Customers")
-                            }
-                            ForEach(customers) { customer in
-                                NavigationLink(destination: CustomerDetailView(businessInfo: $businessInfo, myQuote: $myQuote, customers: customer)) {
-                                    HStack {
-                                        Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
-                                        Text(customer.name).foregroundStyle(.black)
+                            
+                            Section {
+                                ForEach(customers) { customer in
+                                    NavigationLink(destination: CustomerDetailView(myQuote: $myQuote, customers: customer)) {
+                                        HStack {
+                                            Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
+                                            Text(customer.name).foregroundStyle(.black)
+                                        }
                                     }
                                 }
+                                .onDelete(perform: deleteCustomers)
+                            } header: {
+                                Text("Customers").foregroundColor(LMColor.logoColor)
                             }
-                            .onDelete(perform: deleteCustomers)
                         }
                     }
                 }
                 .toolbar {
                     ToolbarItem(placement:.topBarLeading) {
-                        Text("Lawn Machine")
-                            .font(.system(size: 32,weight: .bold))
-                            .foregroundStyle(LMColor.logoColor)
-                        
+                        VStack{
+                            HStack {
+                                Text("Lawn Machine")
+                                    .font(.system(size: 32,weight: .bold))
+                                    .foregroundStyle(LMColor.logoColor)
+                                Image(systemName:"gear").foregroundStyle(LMColor.logoColor).font(.title.bold())
+                            }
+                        }
                     }
                 }
                 .foregroundColor(LMColor.logoColor)
@@ -72,5 +76,5 @@ struct CustomerView: View {
 }
 
 #Preview {
-    CustomerView(businessInfo: Binding.constant(BusinessInfo()), myQuote: Binding.constant(PropertyInfo()))
+    CustomerView(myQuote: Binding.constant(PropertyInfo()))
 }
