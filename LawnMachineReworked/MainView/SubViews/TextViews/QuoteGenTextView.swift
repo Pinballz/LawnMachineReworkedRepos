@@ -92,22 +92,22 @@ struct QuoteGenTextView: View {
                 }.pickerStyle(.segmented)
             }
         }
-        CustomSectionView(headerTitle: "Notes") {
-            HStack {
-                Spacer()
-                TextField("Create Note",text: $myQuote.notes, axis: .vertical)
-                    .foregroundColor(.black)
-                    .keyboardType(.default)
-                    .multilineTextAlignment(.center)
-                    .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                Spacer()
-            }
-        }
         CustomSectionView(headerTitle: "Date of your quote") {
             DatePicker(selection: $myQuote.newDate,displayedComponents: .date) {
                 Text("Quote Date")
             }
             .foregroundColor(.black)
+        }
+        CustomSectionView(headerTitle: "Notes") {
+            HStack {
+                Spacer()
+                TextEditor(text: $myQuote.notes)
+                    .foregroundColor(.black)
+                    .frame(height: 150)
+                    .cornerRadius(8)
+                    .keyboardType(.default)
+                Spacer()
+            }
         }
     }
 }

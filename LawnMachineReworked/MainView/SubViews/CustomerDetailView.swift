@@ -71,11 +71,11 @@ struct CustomerDetailView: View {
                         Section{
                             HStack {
                                 Spacer()
-                                TextField("Enter",text: $customers.notes)
+                                TextEditor(text: $customers.notes)
                                     .foregroundColor(.black)
+                                    .frame(height: 150)
+                                    .cornerRadius(8)
                                     .keyboardType(.default)
-                                    .multilineTextAlignment(.center)
-                                    .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                                 Spacer()
                             }
                         }header: {

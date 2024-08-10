@@ -33,7 +33,6 @@ struct CustomerView: View {
                         }.foregroundColor(LMColor.logoColor)
                     } else {
                         Form {
-                            
                             Section {
                                 ForEach(customers) { customer in
                                     NavigationLink(destination: CustomerDetailView(myQuote: $myQuote, customers: customer)) {

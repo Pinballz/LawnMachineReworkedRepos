@@ -24,6 +24,7 @@
 		532C63E32C583CEE0079E47B /* CustomerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532C63E22C583CEE0079E47B /* CustomerDetailView.swift */; };
 		53609E792C67C40500D091F7 /* CustomSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53609E782C67C40500D091F7 /* CustomSectionView.swift */; };
 		53609E7C2C67D80D00D091F7 /* LMExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53609E7B2C67D80D00D091F7 /* LMExtensions.swift */; };
+		53609E7E2C67E98300D091F7 /* GrowingTextEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53609E7D2C67E98300D091F7 /* GrowingTextEditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		532C63E22C583CEE0079E47B /* CustomerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDetailView.swift; sourceTree = "<group>"; };
 		53609E782C67C40500D091F7 /* CustomSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSectionView.swift; sourceTree = "<group>"; };
 		53609E7B2C67D80D00D091F7 /* LMExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMExtensions.swift; sourceTree = "<group>"; };
+		53609E7D2C67E98300D091F7 /* GrowingTextEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingTextEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				5306553E2C5DFBCF00216442 /* QuoteCalcTextView.swift */,
 				5306553A2C5DF49E00216442 /* BisInfoTextView.swift */,
 				53609E782C67C40500D091F7 /* CustomSectionView.swift */,
+				53609E7D2C67E98300D091F7 /* GrowingTextEditView.swift */,
 			);
 			path = TextViews;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				5306553D2C5DFBB400216442 /* QuoteGenTextView.swift in Sources */,
 				53609E7C2C67D80D00D091F7 /* LMExtensions.swift in Sources */,
 				532C63D72C583B650079E47B /* CustomerViewModel.swift in Sources */,
+				53609E7E2C67E98300D091F7 /* GrowingTextEditView.swift in Sources */,
 				532C63D92C583B760079E47B /* QuotedPropertyInfo.swift in Sources */,
 				532C63E32C583CEE0079E47B /* CustomerDetailView.swift in Sources */,
 				532C63DD2C583C960079E47B /* QuoteGeneratorView.swift in Sources */,

@@ -14,7 +14,6 @@ struct MainTabView: View {
     
     @State private var myQuote = PropertyInfo()
     
-    
     var body: some View {
         TabView {
             CustomerView(myQuote: $myQuote)
