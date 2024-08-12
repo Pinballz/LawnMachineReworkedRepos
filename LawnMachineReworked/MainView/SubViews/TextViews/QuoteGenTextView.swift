@@ -11,7 +11,7 @@ struct QuoteGenTextView: View {
     
     @Binding var myQuote: PropertyInfo
     @State private var pricePerSqrft: [Double] = [0.01, 0.02, 0.03,0.04, 0.05, 0.06]
-    @State private var showCustomQuote: Bool = false
+    @State private var showCustomQuote: Bool = true
     @State private var customQuoteButton: Bool = false
     
     var body: some View {
@@ -24,7 +24,7 @@ struct QuoteGenTextView: View {
                     Spacer()
                     Image(systemName:"gear")
                         .foregroundStyle(LMColor.logoColor)
-                    Text("\(customQuoteButton ? "Custom Quote" : "Detail Quote")")
+                    Text("\(customQuoteButton ? "Detail Quote" : "Custom Quote")")
                         .foregroundColor(.black)
                     Image(systemName:"gear")
                         .foregroundStyle(LMColor.logoColor)
@@ -56,7 +56,7 @@ struct QuoteGenTextView: View {
             CustomSectionView(headerTitle: "Custom Quote") {
                 HStack {
                     Spacer()
-                    TextField("Custom Quote",value: $myQuote.newSub, format: .number)
+                    TextField("Quote Total",value: $myQuote.newSub, format: .currency(code: "USD"))
                         .foregroundColor(.black)
                         .keyboardType(.numberPad)
                         .multilineTextAlignment(.center)
@@ -87,7 +87,7 @@ struct QuoteGenTextView: View {
             CustomSectionView(headerTitle: "Price Per Square Foot") {
                 Picker("per sqrft price", selection: $myQuote.priceChosen) {
                     ForEach(pricePerSqrft, id: \.self) {
-                        Text("\($0.removeZerosFromEnd())")
+                        Text("$\($0.removeZerosFromEnd())")
                     }
                 }.pickerStyle(.segmented)
             }
@@ -104,8 +104,8 @@ struct QuoteGenTextView: View {
                 TextEditor(text: $myQuote.notes)
                     .foregroundColor(.black)
                     .frame(height: 150)
-                    .cornerRadius(8)
                     .keyboardType(.default)
+                    .cornerRadius(10)
                 Spacer()
             }
         }

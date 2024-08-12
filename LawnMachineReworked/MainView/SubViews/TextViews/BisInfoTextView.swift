@@ -31,7 +31,7 @@ struct BisInfoTextView: View {
         CustomSectionView(headerTitle: "Your total subsctiption income") {
             HStack {
                 Spacer()
-                Text("\(Int(sum))")
+                Text("$\(Int(sum))")
                     .foregroundStyle(.black)
                 Spacer()
             }

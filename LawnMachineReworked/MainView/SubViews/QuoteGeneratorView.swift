@@ -72,7 +72,7 @@ struct QuoteGeneratorView: View {
     func quoteCalculator(sqrft: Int) {
         
         let pricePerSqrft = myQuote.priceChosen
-        let hedgeTotal = myQuote.hedgeTotal
+        _ = myQuote.hedgeTotal
         let calcSqft = pricePerSqrft * Double(sqrft)
         let calcHedge = (myQuote.hedgeTotal ?? 0) * 3
         let total = calcSqft + Double(calcHedge)
@@ -81,7 +81,7 @@ struct QuoteGeneratorView: View {
     }
     func clearEstimate() {
         myQuote.newName = ""
-        myQuote.newSub = 0
+        myQuote.newSub = nil
         myQuote.newAddress = ""
         myQuote.newDate = Date.now
         myQuote.sqrft = nil

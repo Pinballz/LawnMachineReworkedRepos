@@ -42,20 +42,20 @@ struct QuoteCalcTextView: View {
                     HStack {
                         Text("Regular Cut cost: ")
                             .foregroundStyle(LMColor.logoColor)
-                        Text("\(Int(totalYardCost))")
+                        Text("$\(Int(totalYardCost))")
                             .foregroundColor(.black)
                     }
                     HStack {
                         Text("Cost of \(myQuote.hedgeTotal ?? 0) hedges: ")
                             .foregroundStyle(LMColor.logoColor)
-                        Text("\(totalHedgeCost)")
+                        Text("$\(totalHedgeCost)")
                             .foregroundColor(.black)
                     }
                 }
             }
             CustomSectionView(headerTitle: "Total") {
                 HStack {
-                    Text(" \(Int(total))")
+                    Text("$\(Int(total))")
                         .foregroundColor(.black)
                 }
             }
@@ -81,7 +81,7 @@ struct QuoteCalcTextView: View {
             }
             CustomSectionView(headerTitle: "Total") {
                 HStack {
-                    Text("\(myQuote.newSub ?? 0)")
+                    Text("$\(myQuote.newSub ?? 0)")
                         .foregroundColor(.black)
                 }
             }
