@@ -22,6 +22,7 @@
 		532C63DF2C583CBD0079E47B /* QuoteCalculatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532C63DE2C583CBD0079E47B /* QuoteCalculatedView.swift */; };
 		532C63E12C583CD60079E47B /* BusinessInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532C63E02C583CD60079E47B /* BusinessInfoView.swift */; };
 		532C63E32C583CEE0079E47B /* CustomerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532C63E22C583CEE0079E47B /* CustomerDetailView.swift */; };
+		534DFCC72C6D11D00059752D /* LMGPSModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534DFCC62C6D11D00059752D /* LMGPSModel.swift */; };
 		53609E792C67C40500D091F7 /* CustomSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53609E782C67C40500D091F7 /* CustomSectionView.swift */; };
 		53609E7C2C67D80D00D091F7 /* LMExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53609E7B2C67D80D00D091F7 /* LMExtensions.swift */; };
 		53609E7E2C67E98300D091F7 /* GrowingTextEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53609E7D2C67E98300D091F7 /* GrowingTextEditView.swift */; };
@@ -44,6 +45,7 @@
 		532C63DE2C583CBD0079E47B /* QuoteCalculatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteCalculatedView.swift; sourceTree = "<group>"; };
 		532C63E02C583CD60079E47B /* BusinessInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessInfoView.swift; sourceTree = "<group>"; };
 		532C63E22C583CEE0079E47B /* CustomerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDetailView.swift; sourceTree = "<group>"; };
+		534DFCC62C6D11D00059752D /* LMGPSModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMGPSModel.swift; sourceTree = "<group>"; };
 		53609E782C67C40500D091F7 /* CustomSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSectionView.swift; sourceTree = "<group>"; };
 		53609E7B2C67D80D00D091F7 /* LMExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMExtensions.swift; sourceTree = "<group>"; };
 		53609E7D2C67E98300D091F7 /* GrowingTextEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingTextEditView.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			children = (
 				532C63D62C583B650079E47B /* CustomerViewModel.swift */,
 				532C63D82C583B760079E47B /* QuotedPropertyInfo.swift */,
+				534DFCC62C6D11D00059752D /* LMGPSModel.swift */,
 				53609E7A2C67D7D500D091F7 /* Extensions */,
 			);
 			path = Models;
@@ -232,6 +235,7 @@
 				532C63DD2C583C960079E47B /* QuoteGeneratorView.swift in Sources */,
 				532C63C42C5839CE0079E47B /* MainTabView.swift in Sources */,
 				532C63DB2C583C840079E47B /* CustomerView.swift in Sources */,
+				534DFCC72C6D11D00059752D /* LMGPSModel.swift in Sources */,
 				532C63D32C583B120079E47B /* LMColors.swift in Sources */,
 				532C63E12C583CD60079E47B /* BusinessInfoView.swift in Sources */,
 				532C63C22C5839CE0079E47B /* LawnMachineReworkedApp.swift in Sources */,

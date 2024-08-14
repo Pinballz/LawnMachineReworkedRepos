@@ -13,7 +13,7 @@ struct MainTabView: View {
     @Environment(\.modelContext) var context
     
     @State private var myQuote = PropertyInfo()
-    
+        
     var body: some View {
         TabView {
             CustomerView(myQuote: $myQuote)

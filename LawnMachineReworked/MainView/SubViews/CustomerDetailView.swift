@@ -18,6 +18,8 @@ struct CustomerDetailView: View {
     
     @Bindable var customers: NewCustomer
     
+    @FocusState private var anotherViewKeyboardIsFocused: Bool
+    
     var body: some View {
         NavigationStack() {
             ZStack {
@@ -76,6 +78,7 @@ struct CustomerDetailView: View {
                                     .frame(height: 150)
                                     .cornerRadius(8)
                                     .keyboardType(.default)
+                                    .focused($anotherViewKeyboardIsFocused)
                                 Spacer()
                             }
                         }header: {
@@ -111,6 +114,10 @@ struct CustomerDetailView: View {
                     .foregroundColor(LMColor.logoColor)
                     .background(LMColor.backgroundColor)
                 }
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        anotherViewKeyboardIsFocused = false
+                    }
             }
         }
     }

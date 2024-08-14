@@ -17,13 +17,17 @@ struct QuoteGeneratorView: View {
     @State private var showingQuoteCalculatedView = false
     
     @Query var customers: [NewCustomer]
+    // creating a variable that removes the keyboard from view
+    @FocusState private var keyboardIsFocused: Bool
     
     var body: some View {
         NavigationStack{
             ZStack {
+                LMColor.backgroundColor
+                    .ignoresSafeArea()
                 VStack {
                     Form {
-                        QuoteGenTextView(myQuote: $myQuote)
+                            QuoteGenTextView(myQuote: $myQuote,keyboardIsFocused: $keyboardIsFocused)
                         Button("Calculate") {
                             if myQuote.newSub == nil {
                                 showingQuoteCalculatedView.toggle()
@@ -37,8 +41,10 @@ struct QuoteGeneratorView: View {
                         }
                         Button("Clear Estimate") {
                             clearEstimate()
-                        }.foregroundStyle(.red)
+                        }
+                        .foregroundStyle(.red)
                     }
+                    .scrollContentBackground(.hidden)
                     .toolbar {
                         ToolbarItem(placement:.topBarLeading) {
                             VStack{
@@ -47,7 +53,8 @@ struct QuoteGeneratorView: View {
                                     Text("Lawn Machine")
                                         .font(.system(size: 32,weight: .bold))
                                         .foregroundStyle(LMColor.logoColor)
-                                    Image(systemName:"gear").foregroundStyle(LMColor.logoColor)
+                                    Image(systemName:"gear")
+                                        .foregroundStyle(LMColor.logoColor)
                                         .font(.title.bold())
                                 }
                                 HStack {
@@ -58,17 +65,20 @@ struct QuoteGeneratorView: View {
                                 }
                                 Spacer()
                                 Spacer()
+                                Spacer()
                             }
                         }
                     }
                 }
-                .scrollContentBackground(.hidden)
                 .foregroundColor(LMColor.logoColor)
-                .background(LMColor.backgroundColor)
+            }
+            .onTapGesture {
+                keyboardIsFocused = false
             }
             .navigationBarTitleDisplayMode(.inline)
         }
     }
+    
     func quoteCalculator(sqrft: Int) {
         
         let pricePerSqrft = myQuote.priceChosen
@@ -91,6 +101,3 @@ struct QuoteGeneratorView: View {
     }
 }
 
-#Preview {
-    QuoteGeneratorView(myQuote: .constant(PropertyInfo()))
-}

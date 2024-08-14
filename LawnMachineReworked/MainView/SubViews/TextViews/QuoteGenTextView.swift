@@ -13,8 +13,10 @@ struct QuoteGenTextView: View {
     @State private var pricePerSqrft: [Double] = [0.01, 0.02, 0.03,0.04, 0.05, 0.06]
     @State private var showCustomQuote: Bool = true
     @State private var customQuoteButton: Bool = false
+    @FocusState.Binding var keyboardIsFocused: Bool
     
     var body: some View {
+        
         Section {
             Button {
                 showCustomQuote.toggle()
@@ -32,6 +34,7 @@ struct QuoteGenTextView: View {
                 }
             }
         }
+        
         CustomSectionView(headerTitle: "Customer Name") {
             HStack {
                 Spacer()
@@ -39,6 +42,7 @@ struct QuoteGenTextView: View {
                     .foregroundColor(.black)
                     .keyboardType(.default)
                     .multilineTextAlignment(.center)
+                    .focused($keyboardIsFocused)
                 Spacer()
             }
         }
@@ -49,6 +53,7 @@ struct QuoteGenTextView: View {
                     .foregroundColor(.black)
                     .keyboardType(.default)
                     .multilineTextAlignment(.center)
+                    .focused($keyboardIsFocused)
                 Spacer()
             }
         }
@@ -60,6 +65,7 @@ struct QuoteGenTextView: View {
                         .foregroundColor(.black)
                         .keyboardType(.numberPad)
                         .multilineTextAlignment(.center)
+                        .focused($keyboardIsFocused)
                     Spacer()
                 }
             }
@@ -71,6 +77,7 @@ struct QuoteGenTextView: View {
                         .foregroundColor(.black)
                         .keyboardType(.numberPad)
                         .multilineTextAlignment(.center)
+                        .focused($keyboardIsFocused)
                     Spacer()
                 }
             }
@@ -81,6 +88,7 @@ struct QuoteGenTextView: View {
                         .foregroundColor(.black)
                         .keyboardType(.numberPad)
                         .multilineTextAlignment(.center)
+                        .focused($keyboardIsFocused)
                     Spacer()
                 }
             }
@@ -106,12 +114,9 @@ struct QuoteGenTextView: View {
                     .frame(height: 150)
                     .keyboardType(.default)
                     .cornerRadius(10)
+                    .focused($keyboardIsFocused)
                 Spacer()
             }
         }
     }
-}
-
-#Preview {
-    QuoteGenTextView(myQuote: Binding.constant(PropertyInfo()))
 }

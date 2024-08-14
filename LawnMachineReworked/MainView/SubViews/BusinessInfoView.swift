@@ -35,6 +35,7 @@ struct BusinessInfoView: View {
                             }
                             Spacer()
                             Spacer()
+                            Spacer()
                         }
                     }
                 }
